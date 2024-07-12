@@ -437,10 +437,10 @@ span{
     justify-content: center;
     align-items: center;
     background-color: var(--main-color);
-    height: 800px;
-    border-radius: 3rem;
+    height: 600px;
+    border-radius: 1rem;
     cursor: pointer;
-    border: 5px solid transparent;
+    border: 2px solid transparent;
     transition: 0.4s ease-in-out;
 }
 .service-box:hover{
@@ -455,7 +455,7 @@ span{
     text-align: center;
     justify-content: center;
     align-items: center;
-    padding: 5rem;
+    padding: 2rem;
 }
 .service-info i{
     font-size: 8rem;

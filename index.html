@@ -4,21 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roel Descartin | Portfolio</title>
-    <meta name="description" content="Personal portfolio of Roel Descartin - aspiring Operational Technology professional.">
+    <meta name="description" content="Portfolio website of Roel Descartin - aspiring Operational Technology and Web Developer.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="ui.css">
+    <link rel="stylesheet" href="ui-v2.css">
 </head>
 <body>
-    <header class="header" id="header">
-        <a href="#home" class="logo">Roel <span>Descartin</span></a>
-        <button class="menu-toggle" id="menu-icon" aria-label="Open navigation menu" aria-expanded="false" aria-controls="site-nav">
+    <header class="site-header" id="site-header">
+        <a href="#home" class="brand">Roel <span>Descartin</span></a>
+        <button class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
             <i class="fa-solid fa-bars"></i>
         </button>
-        <nav class="navbar" id="site-nav">
+        <nav class="site-nav" id="site-nav">
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#services">Services</a>
@@ -28,49 +28,48 @@
     </header>
 
     <main>
-        <section class="hero section" id="home">
-            <div class="hero-content reveal">
-                <p class="eyebrow">Aspiring OT Professional</p>
+        <section class="section hero" id="home">
+            <div class="hero-copy reveal">
+                <p class="badge">Aspiring OT Professional</p>
                 <h1>Building reliable <span>technology solutions</span> for real-world systems.</h1>
                 <p class="lead">
-                    Hi, I am Roel B. Descartin from Panabo City. I am focused on Operational Technology and
-                    modern web development with a practical, problem-solving mindset.
+                    Hi, I am Roel B. Descartin from Panabo City. I focus on Operational Technology and modern
+                    web development with a practical, problem-solving mindset.
                 </p>
-                <div class="hero-meta">
+                <div class="meta">
                     <span><i class="fa-solid fa-location-dot"></i> Panabo City, Philippines</span>
                     <span><i class="fa-solid fa-graduation-cap"></i> BSIT Student</span>
                 </div>
-                <div class="cta-group">
+                <div class="actions">
                     <a class="btn btn-primary" href="#projects">View Projects</a>
-                    <a class="btn btn-outline" href="#contact">Hire Me</a>
-                    <a class="btn btn-outline" href="Roel-Descartin-CV.txt" download>Download CV</a>
+                    <a class="btn btn-ghost" href="#contact">Hire Me</a>
+                    <a class="btn btn-ghost" href="Roel-Descartin-CV.txt" download>Download CV</a>
                 </div>
-                <div class="social-icons">
+                <div class="social">
                     <a href="https://github.com/KongSkull12" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="bx bxl-github"></i></a>
                     <a href="https://www.instagram.com/roeldescartin/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="bx bxl-instagram-alt"></i></a>
                     <a href="https://www.facebook.com/roeldescartin22" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="bx bxl-facebook-circle"></i></a>
                 </div>
             </div>
-            <div class="hero-visual reveal">
-                <div class="avatar-card">
-                    <img src="image3.png" alt="Roel Descartin profile photo">
-                    <p>Operational Technology</p>
-                </div>
+            <div class="hero-card reveal">
+                <img src="image3.png" alt="Roel Descartin portrait">
+                <p>Operational Technology</p>
             </div>
         </section>
 
-        <section class="about section" id="about">
-            <div class="section-title reveal">
+        <section class="section" id="about">
+            <div class="section-head reveal">
                 <h2>About Me</h2>
             </div>
-            <div class="about-grid">
-                <article class="about-card reveal">
+            <div class="grid two">
+                <article class="card reveal">
                     <h3>Profile</h3>
                     <p>
-                        I am Roel B. Descartin, 23 years old, currently studying Bachelor of Science in Information
-                        Technology at Davao del Norte State College. I enjoy building projects that combine hardware awareness and software solutions.
+                        I am Roel B. Descartin, currently studying Bachelor of Science in Information Technology
+                        at Davao del Norte State College. I enjoy building projects that combine technical
+                        knowledge, creativity, and real-world usefulness.
                     </p>
-                    <ul class="quick-info">
+                    <ul class="list">
                         <li><strong>Birthday:</strong> May 21, 2001</li>
                         <li><strong>Phone:</strong> 0938 895 3972</li>
                         <li><strong>Email:</strong> roeldescartin12@gmail.com</li>
@@ -78,9 +77,9 @@
                     </ul>
                 </article>
 
-                <article class="about-card reveal">
+                <article class="card reveal">
                     <h3>Interests</h3>
-                    <div class="tag-grid">
+                    <div class="chips">
                         <span><i class="fa-solid fa-music"></i> Music</span>
                         <span><i class="fa-solid fa-brush"></i> Photo Editing</span>
                         <span><i class="fa-solid fa-terminal"></i> Coding</span>
@@ -91,91 +90,89 @@
                 </article>
             </div>
 
-            <div class="skills-card reveal">
+            <article class="card skills reveal">
                 <h3>Skills</h3>
-                <div class="skill-list">
-                    <div class="skill-item"><span>JavaScript</span><span>45%</span><div class="bar"><div style="width:45%"></div></div></div>
-                    <div class="skill-item"><span>PHP</span><span>50%</span><div class="bar"><div style="width:50%"></div></div></div>
-                    <div class="skill-item"><span>HTML/CSS</span><span>70%</span><div class="bar"><div style="width:70%"></div></div></div>
-                    <div class="skill-item"><span>MySQL</span><span>45%</span><div class="bar"><div style="width:45%"></div></div></div>
-                    <div class="skill-item"><span>Laravel</span><span>40%</span><div class="bar"><div style="width:40%"></div></div></div>
-                    <div class="skill-item"><span>Bootstrap</span><span>55%</span><div class="bar"><div style="width:55%"></div></div></div>
-                </div>
-            </div>
+                <div class="skill-row"><span>JavaScript</span><span>45%</span><div class="bar"><div style="width:45%"></div></div></div>
+                <div class="skill-row"><span>PHP</span><span>50%</span><div class="bar"><div style="width:50%"></div></div></div>
+                <div class="skill-row"><span>HTML/CSS</span><span>70%</span><div class="bar"><div style="width:70%"></div></div></div>
+                <div class="skill-row"><span>MySQL</span><span>45%</span><div class="bar"><div style="width:45%"></div></div></div>
+                <div class="skill-row"><span>Laravel</span><span>40%</span><div class="bar"><div style="width:40%"></div></div></div>
+                <div class="skill-row"><span>Bootstrap</span><span>55%</span><div class="bar"><div style="width:55%"></div></div></div>
+            </article>
         </section>
 
-        <section class="services section" id="services">
-            <div class="section-title reveal">
+        <section class="section" id="services">
+            <div class="section-head reveal">
                 <h2>Services</h2>
             </div>
-            <div class="services-container">
-                <article class="service-box reveal">
+            <div class="grid three">
+                <article class="card service reveal">
                     <i class="bx bxs-devices"></i>
                     <h3>Cellphone Technician</h3>
-                    <p>Hands-on experience diagnosing and repairing mobile device hardware and software issues with reliable turnaround.</p>
+                    <p>Hands-on experience diagnosing and repairing mobile hardware and software issues with reliable turnaround.</p>
                 </article>
-                <article class="service-box reveal">
+                <article class="card service reveal">
                     <i class="bx bx-data"></i>
                     <h3>Backend Development</h3>
-                    <p>Foundational backend skills for building structured APIs, database-driven systems, and secure server-side logic.</p>
+                    <p>Entry-level backend development for API basics, database integration, and clean server-side logic.</p>
                 </article>
-                <article class="service-box reveal">
+                <article class="card service reveal">
                     <i class="bx bx-code-curly"></i>
                     <h3>Frontend Development</h3>
-                    <p>Responsive and clean user interfaces using HTML, CSS, and JavaScript with focus on readability and user experience.</p>
+                    <p>Responsive web interfaces built with focus on clean layout, readability, and user-friendly interaction.</p>
                 </article>
             </div>
         </section>
 
-        <section class="projects section" id="projects">
-            <div class="section-title reveal">
+        <section class="section" id="projects">
+            <div class="section-head reveal">
                 <h2>Projects</h2>
             </div>
-            <div class="project-grid">
-                <article class="project-card reveal">
+            <div class="grid four">
+                <article class="card project reveal">
+                    <img src="img/enroll.png" alt="Enrollment system screenshot">
                     <h3>Enrollment System UI</h3>
-                    <p>Design prototype for student enrollment workflow with clear forms and dashboard-style layout.</p>
-                    <a href="img/enroll.png" target="_blank" rel="noopener noreferrer" aria-label="Open Enrollment System project screenshot">View Project</a>
+                    <a href="img/enroll.png" target="_blank" rel="noopener noreferrer">View Project</a>
                 </article>
-                <article class="project-card reveal">
+                <article class="card project reveal">
+                    <img src="img/order.png" alt="Ordering system screenshot">
                     <h3>Ordering System</h3>
-                    <p>Simple order management application concept with item tracking and customer summary views.</p>
-                    <a href="img/order.png" target="_blank" rel="noopener noreferrer" aria-label="Open Ordering System project screenshot">View Project</a>
+                    <a href="img/order.png" target="_blank" rel="noopener noreferrer">View Project</a>
                 </article>
-                <article class="project-card reveal">
+                <article class="card project reveal">
+                    <img src="img/water.png" alt="Water billing screenshot">
                     <h3>Water Billing Concept</h3>
-                    <p>Practice project for water utility billing, focused on data handling and invoice calculation.</p>
-                    <a href="img/water.png" target="_blank" rel="noopener noreferrer" aria-label="Open Water Billing project screenshot">View Project</a>
+                    <a href="img/water.png" target="_blank" rel="noopener noreferrer">View Project</a>
                 </article>
-                <article class="project-card reveal">
+                <article class="card project reveal">
+                    <img src="img/RO.png" alt="Portfolio project screenshot">
                     <h3>Tech Services Portfolio</h3>
-                    <p>Personal showcase for technical services, skills, and practical problem-solving experience.</p>
-                    <a href="https://github.com/KongSkull12/portfolio" target="_blank" rel="noopener noreferrer" aria-label="Open source code on GitHub">View Project</a>
+                    <a href="https://github.com/KongSkull12/portfolio" target="_blank" rel="noopener noreferrer">View Project</a>
                 </article>
             </div>
         </section>
 
-        <section class="contact section" id="contact">
-            <div class="section-title reveal">
+        <section class="section" id="contact">
+            <div class="section-head reveal">
                 <h2>Contact Me</h2>
             </div>
-            <form class="contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+            <form class="card contact-form reveal" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
                 <input type="hidden" name="access_key" value="b7dcae10-e926-4c42-8114-2d5f41f6a882">
                 <input type="hidden" name="subject" value="New portfolio inquiry">
-                <div class="input-grid">
+                <div class="field-grid">
                     <input type="text" name="name" placeholder="Full Name" required>
                     <input type="email" name="email" placeholder="Email Address" required>
                     <input type="tel" name="phone" placeholder="Phone Number" required>
                     <input type="text" name="topic" placeholder="Project Topic" required>
                 </div>
-                <textarea name="message" rows="8" placeholder="Write your message..." required></textarea>
-                <button type="submit" class="btn btn-primary" id="send-btn">Send Message</button>
-                <p class="form-status" id="form-status" aria-live="polite"></p>
+                <textarea name="message" rows="7" placeholder="Write your message..." required></textarea>
+                <button class="btn btn-primary" id="send-btn" type="submit">Send Message</button>
+                <p class="status" id="form-status" aria-live="polite"></p>
             </form>
         </section>
     </main>
 
-    <footer class="footer">
+    <footer class="site-footer">
         <p>&copy; <span id="year"></span> Roel Descartin. All rights reserved.</p>
     </footer>
 

@@ -1,59 +1,51 @@
-const menuButton = document.querySelector("#menu-icon");
-const navbar = document.querySelector(".navbar");
-const navLinks = document.querySelectorAll(".navbar a");
-const header = document.querySelector("#header");
+const menuBtn = document.querySelector("#menu-btn");
+const nav = document.querySelector("#site-nav");
+const navLinks = document.querySelectorAll("#site-nav a");
 const sections = document.querySelectorAll("main section[id]");
-const yearElement = document.querySelector("#year");
-const revealElements = document.querySelectorAll(".reveal");
+const header = document.querySelector("#site-header");
+const year = document.querySelector("#year");
+const revealItems = document.querySelectorAll(".reveal");
+const topBtn = document.querySelector("#scroll-top");
 const form = document.querySelector("#contact-form");
-const formStatus = document.querySelector("#form-status");
+const statusEl = document.querySelector("#form-status");
 const sendBtn = document.querySelector("#send-btn");
-const scrollTopButton = document.querySelector("#scroll-top");
 
 const closeMenu = () => {
-    if (!navbar || !menuButton) {
-        return;
-    }
-
-    navbar.classList.remove("active");
-    menuButton.setAttribute("aria-expanded", "false");
-    menuButton.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    nav.classList.remove("open");
+    menuBtn.setAttribute("aria-expanded", "false");
+    menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
 };
 
-menuButton?.addEventListener("click", () => {
-    const expanded = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!expanded));
-    navbar?.classList.toggle("active");
-    menuButton.innerHTML = expanded
-        ? '<i class="fa-solid fa-bars"></i>'
-        : '<i class="fa-solid fa-xmark"></i>';
+menuBtn?.addEventListener("click", () => {
+    const opened = nav.classList.toggle("open");
+    menuBtn.setAttribute("aria-expanded", String(opened));
+    menuBtn.innerHTML = opened
+        ? '<i class="fa-solid fa-xmark"></i>'
+        : '<i class="fa-solid fa-bars"></i>';
 });
 
 navLinks.forEach((link) => {
-    link.addEventListener("click", () => {
-        closeMenu();
-    });
+    link.addEventListener("click", closeMenu);
 });
 
-const setActiveLink = () => {
-    const scrollOffset = window.scrollY + 140;
-    let activeId = "";
+const setActiveNav = () => {
+    const position = window.scrollY + 140;
+    let active = "home";
 
     sections.forEach((section) => {
-        if (scrollOffset >= section.offsetTop) {
-            activeId = section.id;
+        if (position >= section.offsetTop) {
+            active = section.id;
         }
     });
 
     navLinks.forEach((link) => {
-        const href = link.getAttribute("href");
-        link.classList.toggle("active", href === `#${activeId}`);
+        link.classList.toggle("active", link.getAttribute("href") === `#${active}`);
     });
 };
 
-const handleHeaderStyle = () => {
-    header?.classList.toggle("scrolled", window.scrollY > 8);
-    scrollTopButton?.classList.toggle("show", window.scrollY > 450);
+const handleWindowUI = () => {
+    header.classList.toggle("scrolled", window.scrollY > 10);
+    topBtn.classList.toggle("show", window.scrollY > 450);
 };
 
 const revealObserver = new IntersectionObserver(
@@ -68,15 +60,15 @@ const revealObserver = new IntersectionObserver(
     { threshold: 0.2 }
 );
 
-revealElements.forEach((el) => revealObserver.observe(el));
+revealItems.forEach((item) => revealObserver.observe(item));
 
 window.addEventListener("scroll", () => {
-    setActiveLink();
-    handleHeaderStyle();
+    setActiveNav();
+    handleWindowUI();
 });
 
 window.addEventListener("resize", () => {
-    if (window.innerWidth > 900) {
+    if (window.innerWidth > 920) {
         closeMenu();
     }
 });
@@ -87,38 +79,37 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-scrollTopButton?.addEventListener("click", () => {
+topBtn?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
-yearElement.textContent = new Date().getFullYear();
-setActiveLink();
-handleHeaderStyle();
-
 form?.addEventListener("submit", async (event) => {
     event.preventDefault();
-    formStatus.className = "form-status";
-    formStatus.textContent = "Sending your message...";
+    statusEl.className = "status";
+    statusEl.textContent = "Sending your message...";
     sendBtn.disabled = true;
 
     try {
-        const formData = new FormData(form);
         const response = await fetch(form.action, {
             method: "POST",
-            body: formData
+            body: new FormData(form)
         });
 
         if (!response.ok) {
-            throw new Error("Failed to send");
+            throw new Error("Request failed");
         }
 
         form.reset();
-        formStatus.classList.add("success");
-        formStatus.textContent = "Message sent successfully. Thank you!";
+        statusEl.classList.add("ok");
+        statusEl.textContent = "Message sent successfully. Thank you!";
     } catch (error) {
-        formStatus.classList.add("error");
-        formStatus.textContent = "Message failed to send. Please try again.";
+        statusEl.classList.add("err");
+        statusEl.textContent = "Failed to send message. Please try again.";
     } finally {
         sendBtn.disabled = false;
     }
 });
+
+year.textContent = new Date().getFullYear();
+setActiveNav();
+handleWindowUI();

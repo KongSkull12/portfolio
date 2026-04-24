@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const menuButton = document.querySelector("#menu-icon");
 const navbar = document.querySelector(".navbar");
 const navLinks = document.querySelectorAll(".navbar a");
@@ -87,3 +88,12 @@ handleHeaderStyle();
 form?.addEventListener("submit", () => {
     formStatus.textContent = "Sending your message...";
 });
+=======
+const menuIcon = document.querySelector('#menu-icon');
+const navbar = document.querySelector('.navbar');
+
+menuIcon.onclick = () => {
+    menuIcon.classList.toggle('bx-x');
+    navbar.classList.toggle('active');
+}
+>>>>>>> 24527ad30b33c964ab4a24879ada9285a0eecbc1

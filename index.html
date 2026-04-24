@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="ui.css">
 </head>
 <body>
     <header class="header" id="header">
@@ -169,7 +169,7 @@
                     <input type="text" name="topic" placeholder="Project Topic" required>
                 </div>
                 <textarea name="message" rows="8" placeholder="Write your message..." required></textarea>
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-primary" id="send-btn">Send Message</button>
                 <p class="form-status" id="form-status" aria-live="polite"></p>
             </form>
         </section>
@@ -178,6 +178,10 @@
     <footer class="footer">
         <p>&copy; <span id="year"></span> Roel Descartin. All rights reserved.</p>
     </footer>
+
+    <button class="scroll-top" id="scroll-top" aria-label="Scroll to top">
+        <i class="fa-solid fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>

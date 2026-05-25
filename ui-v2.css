@@ -1262,7 +1262,7 @@ img {
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.25s ease;
-    z-index: 1200;
+    z-index: 1500;
     padding: 2rem;
     backdrop-filter: blur(6px);
 }

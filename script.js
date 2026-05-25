@@ -13,7 +13,8 @@ const form            = document.querySelector("#contact-form");
 const statusEl        = document.querySelector("#form-status");
 const sendBtn         = document.querySelector("#send-btn");
 const certToggle      = document.querySelector("#cert-toggle");
-const certificateGrid = document.querySelector("#certificate-grid");
+const certModal       = document.querySelector("#cert-modal");
+const certModalClose  = document.querySelector("#cert-modal-close");
 const lightbox        = document.querySelector("#certificate-lightbox");
 const lightboxImage   = document.querySelector("#lightbox-image");
 const lightboxClose   = document.querySelector("#lightbox-close");
@@ -112,20 +113,42 @@ const revealObserver = new IntersectionObserver(
 revealItems.forEach((item) => revealObserver.observe(item));
 
 /* ============================================================
-   CERTIFICATES TOGGLE
+   CERTIFICATE MODAL — OPEN / CLOSE
    ============================================================ */
-certToggle?.addEventListener("click", () => {
-    const open = certificateGrid.classList.toggle("open");
-    certToggle.setAttribute("aria-expanded", String(open));
-    certToggle.innerHTML = open
-        ? '<i class="fa-solid fa-chevron-up"></i> Hide Certificates'
-        : '<i class="fa-solid fa-certificate"></i> View Certificates';
+const openCertModal = () => {
+    certModal.classList.add("open");
+    certModal.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+    certModalClose?.focus();
+};
 
-    if (open) {
-        certificateGrid.querySelectorAll(".reveal").forEach((item) => {
-            revealObserver.observe(item);
-        });
-    }
+const closeCertModal = () => {
+    certModal.classList.remove("open");
+    certModal.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+    certToggle?.focus();
+};
+
+certToggle?.addEventListener("click", openCertModal);
+certModalClose?.addEventListener("click", closeCertModal);
+
+// Click backdrop (outside the panel) to close
+certModal?.addEventListener("click", (event) => {
+    if (event.target === certModal) closeCertModal();
+});
+
+// "View full image" buttons inside the modal
+certModal?.addEventListener("click", (event) => {
+    const btn = event.target.closest(".btn-view-full");
+    if (!btn) return;
+    const src = btn.dataset.src;
+    const alt = btn.dataset.alt;
+    if (!src) return;
+    lightboxImage.src = src;
+    lightboxImage.alt = alt || "";
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    // Keep body scroll locked (already locked by modal)
 });
 
 /* ============================================================
@@ -136,17 +159,11 @@ const closeLightbox = () => {
     lightbox.setAttribute("aria-hidden", "true");
     lightboxImage.src = "";
     lightboxImage.alt = "";
-    document.body.style.overflow = "";
+    // If cert modal is open, keep body scroll locked
+    if (!certModal?.classList.contains("open")) {
+        document.body.style.overflow = "";
+    }
 };
-
-certificateGrid?.addEventListener("click", (event) => {
-    if (!(event.target instanceof HTMLImageElement)) return;
-    lightboxImage.src = event.target.src;
-    lightboxImage.alt = event.target.alt;
-    lightbox.classList.add("open");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-});
 
 lightboxClose?.addEventListener("click", closeLightbox);
 
@@ -161,6 +178,10 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
         if (lightbox?.classList.contains("open")) {
             closeLightbox();
+            return;
+        }
+        if (certModal?.classList.contains("open")) {
+            closeCertModal();
             return;
         }
         closeMenu();

@@ -249,6 +249,67 @@ if (typedText) {
 }
 
 /* ============================================================
+   PROJECT CAROUSEL
+   ============================================================ */
+(function () {
+    const track    = document.getElementById("carousel-track");
+    const prevBtn  = document.getElementById("proj-prev");
+    const nextBtn  = document.getElementById("proj-next");
+    const dotsWrap = document.getElementById("carousel-dots");
+
+    if (!track || !prevBtn || !nextBtn || !dotsWrap) return;
+
+    const slides = Array.from(track.querySelectorAll(".carousel-slide"));
+    let current  = 0;
+    let autoTimer;
+
+    // Build dots
+    slides.forEach((_, i) => {
+        const dot = document.createElement("button");
+        dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", "Project " + (i + 1));
+        dot.addEventListener("click", () => goTo(i));
+        dotsWrap.appendChild(dot);
+    });
+
+    const dots = Array.from(dotsWrap.querySelectorAll(".carousel-dot"));
+
+    const goTo = (index) => {
+        current = (index + slides.length) % slides.length;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle("active", i === current));
+        prevBtn.disabled = false;
+        nextBtn.disabled = false;
+        resetAuto();
+    };
+
+    prevBtn.addEventListener("click", () => goTo(current - 1));
+    nextBtn.addEventListener("click", () => goTo(current + 1));
+
+    // Keyboard arrow support when focused on the carousel
+    document.getElementById("project-carousel")?.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowLeft")  goTo(current - 1);
+        if (e.key === "ArrowRight") goTo(current + 1);
+    });
+
+    // Touch / swipe support
+    let touchStartX = 0;
+    track.addEventListener("touchstart", (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener("touchend",   (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    }, { passive: true });
+
+    // Auto-advance every 5 s
+    const resetAuto = () => {
+        clearInterval(autoTimer);
+        autoTimer = setInterval(() => goTo(current + 1), 5000);
+    };
+    resetAuto();
+})();
+
+/* ============================================================
    CONTACT FORM SUBMISSION
    ============================================================ */
 form?.addEventListener("submit", async (event) => {

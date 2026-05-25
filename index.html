@@ -195,98 +195,133 @@
             <div class="subhead reveal">
                 <h3>Featured Projects</h3>
             </div>
-            <div class="grid three project-gallery">
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/picklepro.png" alt="Pickle Pro World screenshot" loading="lazy">
-                        <div class="project-overlay"><a href="https://pickleproworld.com" target="_blank" rel="noopener noreferrer"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Live Site</span></a></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Pickle Pro World <span class="live-badge"><i class="fa-solid fa-circle"></i> Live</span></h4>
-                        <p class="project-desc">A full-featured pickleball platform with court bookings, open plays, tournaments, live events, player rankings, and membership management — deployed live on the internet.</p>
-                        <div class="tech-tags">
-                            <span>PHP</span><span>MySQL</span><span>phpMyAdmin</span><span>CSS</span><span>JavaScript</span>
+
+            <!-- Project Carousel -->
+            <div class="project-carousel-wrap reveal">
+                <button class="carousel-btn carousel-prev" id="proj-prev" aria-label="Previous project">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="project-carousel" id="project-carousel" aria-live="polite">
+                    <div class="carousel-track" id="carousel-track">
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/picklepro.png" alt="Pickle Pro World screenshot" loading="lazy">
+                                    <div class="project-overlay"><a href="https://pickleproworld.com" target="_blank" rel="noopener noreferrer"><span><i class="fa-solid fa-arrow-up-right-from-square"></i> Visit Live Site</span></a></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>Pickle Pro World <span class="live-badge"><i class="fa-solid fa-circle"></i> Live</span></h4>
+                                    <p class="project-desc">A full-featured pickleball platform with court bookings, open plays, tournaments, live events, player rankings, and membership management — deployed live on the internet.</p>
+                                    <div class="tech-tags">
+                                        <span>PHP</span><span>MySQL</span><span>phpMyAdmin</span><span>CSS</span><span>JavaScript</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                </article>
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/RO.png" alt="T-Shirt Design using Photoshop" loading="lazy">
-                        <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>T-Shirt Design</h4>
-                        <p class="project-desc">Custom military-themed T-shirt design with front and back graphics, created using Adobe Photoshop.</p>
-                        <div class="tech-tags">
-                            <span>Photoshop</span><span>Graphic Design</span>
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/RO.png" alt="T-Shirt Design using Photoshop" loading="lazy">
+                                    <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>T-Shirt Design</h4>
+                                    <p class="project-desc">Custom military-themed T-shirt design with front and back graphics, created using Adobe Photoshop.</p>
+                                    <div class="tech-tags">
+                                        <span>Photoshop</span><span>Graphic Design</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                </article>
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/enroll.png" alt="Enrollment system screenshot" loading="lazy">
-                        <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Enrollment System UI</h4>
-                        <p class="project-desc">A responsive enrollment system interface with student record management.</p>
-                        <div class="tech-tags">
-                            <span>HTML</span><span>CSS</span><span>Bootstrap</span>
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/enroll.png" alt="Enrollment system screenshot" loading="lazy">
+                                    <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>Enrollment System UI</h4>
+                                    <p class="project-desc">A responsive enrollment system interface with student record management.</p>
+                                    <div class="tech-tags">
+                                        <span>HTML</span><span>CSS</span><span>Bootstrap</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                </article>
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/order.png" alt="Ordering system screenshot" loading="lazy">
-                        <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Ordering System</h4>
-                        <p class="project-desc">A food ordering system with cart functionality and order tracking.</p>
-                        <div class="tech-tags">
-                            <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/order.png" alt="Ordering system screenshot" loading="lazy">
+                                    <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>Ordering System</h4>
+                                    <p class="project-desc">A food ordering system with cart functionality and order tracking.</p>
+                                    <div class="tech-tags">
+                                        <span>PHP</span><span>MySQL</span><span>Bootstrap</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                </article>
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/water.png" alt="Water billing screenshot" loading="lazy">
-                        <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Water Billing Concept</h4>
-                        <p class="project-desc">Billing management system concept for water utility services.</p>
-                        <div class="tech-tags">
-                            <span>PHP</span><span>MySQL</span><span>CSS</span>
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/water.png" alt="Water billing screenshot" loading="lazy">
+                                    <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>Water Billing Concept</h4>
+                                    <p class="project-desc">Billing management system concept for water utility services.</p>
+                                    <div class="tech-tags">
+                                        <span>PHP</span><span>MySQL</span><span>CSS</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                </article>
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/db.png" alt="Database project screenshot" loading="lazy">
-                        <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Database Design</h4>
-                        <p class="project-desc">Structured relational database schema design for an academic use case.</p>
-                        <div class="tech-tags">
-                            <span>MySQL</span><span>ERD</span>
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/db.png" alt="Database project screenshot" loading="lazy">
+                                    <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>Database Design</h4>
+                                    <p class="project-desc">Structured relational database schema design for an academic use case.</p>
+                                    <div class="tech-tags">
+                                        <span>MySQL</span><span>ERD</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
-                    </div>
-                </article>
-                <article class="card project reveal">
-                    <div class="project-img-wrap">
-                        <img src="img/tech.jpg" alt="Tech services screenshot" loading="lazy">
-                        <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
-                    </div>
-                    <div class="project-content">
-                        <h4>Tech Services</h4>
-                        <p class="project-desc">Service landing page for a tech repair and IT support business.</p>
-                        <div class="tech-tags">
-                            <span>HTML</span><span>CSS</span>
+
+                        <div class="carousel-slide">
+                            <article class="card project">
+                                <div class="project-img-wrap">
+                                    <img src="img/tech.jpg" alt="Tech services screenshot" loading="lazy">
+                                    <div class="project-overlay"><span><i class="fa-solid fa-eye"></i> View Project</span></div>
+                                </div>
+                                <div class="project-content">
+                                    <h4>Tech Services</h4>
+                                    <p class="project-desc">Service landing page for a tech repair and IT support business.</p>
+                                    <div class="tech-tags">
+                                        <span>HTML</span><span>CSS</span>
+                                    </div>
+                                </div>
+                            </article>
                         </div>
+
                     </div>
-                </article>
+                </div>
+                <button class="carousel-btn carousel-next" id="proj-next" aria-label="Next project">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="carousel-dots" id="carousel-dots" role="tablist" aria-label="Project slides"></div>
             </div>
 
             <div class="subhead reveal cert-header">

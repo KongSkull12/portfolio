@@ -931,6 +931,7 @@ img {
     aspect-ratio: 16 / 10;
     object-fit: cover;
     display: block;
+    cursor: zoom-in;
     transition: transform 0.35s ease;
 }
 
@@ -1007,6 +1008,12 @@ img {
     background: rgba(180, 100, 255, 0.12);
     border-color: rgba(180, 100, 255, 0.35);
     color: #d4a5ff;
+}
+
+.cert-issuer-badge.gcash {
+    background: rgba(0, 168, 107, 0.12);
+    border-color: rgba(0, 168, 107, 0.4);
+    color: #5ddbaa;
 }
 
 /* "View full image" button */

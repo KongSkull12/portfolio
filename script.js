@@ -137,18 +137,34 @@ certModal?.addEventListener("click", (event) => {
     if (event.target === certModal) closeCertModal();
 });
 
-// "View full image" buttons inside the modal
-certModal?.addEventListener("click", (event) => {
-    const btn = event.target.closest(".btn-view-full");
-    if (!btn) return;
-    const src = btn.dataset.src;
-    const alt = btn.dataset.alt;
+// Open lightbox when clicking cert image OR "View full image" button inside the modal
+const openLightboxFrom = (src, alt) => {
     if (!src) return;
     lightboxImage.src = src;
     lightboxImage.alt = alt || "";
     lightbox.classList.add("open");
     lightbox.setAttribute("aria-hidden", "false");
-    // Keep body scroll locked (already locked by modal)
+};
+
+certModal?.addEventListener("click", (event) => {
+    // "View full image" button
+    const btn = event.target.closest(".btn-view-full");
+    if (btn) {
+        openLightboxFrom(btn.dataset.src, btn.dataset.alt);
+        return;
+    }
+
+    // Clicking the certificate image itself
+    const img = event.target.closest(".cert-card-img img");
+    if (img) {
+        // Find the corresponding btn-view-full in the same card to get the data
+        const card = img.closest(".cert-card");
+        const viewBtn = card?.querySelector(".btn-view-full");
+        openLightboxFrom(
+            viewBtn?.dataset.src || img.src,
+            viewBtn?.dataset.alt || img.alt
+        );
+    }
 });
 
 /* ============================================================

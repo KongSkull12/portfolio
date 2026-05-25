@@ -9,6 +9,11 @@ const topBtn = document.querySelector("#scroll-top");
 const form = document.querySelector("#contact-form");
 const statusEl = document.querySelector("#form-status");
 const sendBtn = document.querySelector("#send-btn");
+const certToggle = document.querySelector("#cert-toggle");
+const certificateGrid = document.querySelector("#certificate-grid");
+const lightbox = document.querySelector("#certificate-lightbox");
+const lightboxImage = document.querySelector("#lightbox-image");
+const lightboxClose = document.querySelector("#lightbox-close");
 
 const closeMenu = () => {
     nav.classList.remove("open");
@@ -75,12 +80,57 @@ window.addEventListener("resize", () => {
 
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
+        if (lightbox?.classList.contains("open")) {
+            closeLightbox();
+            return;
+        }
         closeMenu();
     }
 });
 
 topBtn?.addEventListener("click", () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+certToggle?.addEventListener("click", () => {
+    const open = certificateGrid.classList.toggle("open");
+    certToggle.setAttribute("aria-expanded", String(open));
+    certToggle.textContent = open ? "Hide Certificates" : "View Certificates";
+
+    if (open) {
+        certificateGrid.querySelectorAll(".reveal").forEach((item) => {
+            revealObserver.observe(item);
+        });
+    }
+});
+
+const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImage.src = "";
+    lightboxImage.alt = "";
+    document.body.style.overflow = "";
+};
+
+certificateGrid?.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLImageElement)) {
+        return;
+    }
+
+    lightboxImage.src = target.src;
+    lightboxImage.alt = target.alt;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+});
+
+lightboxClose?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+        closeLightbox();
+    }
 });
 
 form?.addEventListener("submit", async (event) => {

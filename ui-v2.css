@@ -919,6 +919,35 @@ img {
     transition: background 0.18s ease;
 }
 
+.project-overlay a {
+    text-decoration: none;
+}
+
+.live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+    border-radius: 999px;
+    padding: 0.15rem 0.55rem;
+    vertical-align: middle;
+    letter-spacing: 0.04em;
+}
+
+.live-badge i {
+    font-size: 0.45rem;
+    animation: pulse-dot 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
 /* Content area — grows to fill remaining card height */
 .project-content {
     display: flex;

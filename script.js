@@ -1,20 +1,28 @@
-const menuBtn = document.querySelector("#menu-btn");
-const nav = document.querySelector("#site-nav");
-const navLinks = document.querySelectorAll("#site-nav a");
-const sections = document.querySelectorAll("main section[id]");
-const header = document.querySelector("#site-header");
-const year = document.querySelector("#year");
-const revealItems = document.querySelectorAll(".reveal");
-const topBtn = document.querySelector("#scroll-top");
-const form = document.querySelector("#contact-form");
-const statusEl = document.querySelector("#form-status");
-const sendBtn = document.querySelector("#send-btn");
-const certToggle = document.querySelector("#cert-toggle");
+/* ============================================================
+   DOM REFERENCES
+   ============================================================ */
+const menuBtn         = document.querySelector("#menu-btn");
+const nav             = document.querySelector("#site-nav");
+const navLinks        = document.querySelectorAll("#site-nav a");
+const sections        = document.querySelectorAll("main section[id]");
+const header          = document.querySelector("#site-header");
+const year            = document.querySelector("#year");
+const revealItems     = document.querySelectorAll(".reveal");
+const topBtn          = document.querySelector("#scroll-top");
+const form            = document.querySelector("#contact-form");
+const statusEl        = document.querySelector("#form-status");
+const sendBtn         = document.querySelector("#send-btn");
+const certToggle      = document.querySelector("#cert-toggle");
 const certificateGrid = document.querySelector("#certificate-grid");
-const lightbox = document.querySelector("#certificate-lightbox");
-const lightboxImage = document.querySelector("#lightbox-image");
-const lightboxClose = document.querySelector("#lightbox-close");
+const lightbox        = document.querySelector("#certificate-lightbox");
+const lightboxImage   = document.querySelector("#lightbox-image");
+const lightboxClose   = document.querySelector("#lightbox-close");
+const progressBar     = document.querySelector("#page-progress");
+const typedText       = document.querySelector("#typed-text");
 
+/* ============================================================
+   MOBILE MENU
+   ============================================================ */
 const closeMenu = () => {
     nav.classList.remove("open");
     menuBtn.setAttribute("aria-expanded", "false");
@@ -29,18 +37,21 @@ menuBtn?.addEventListener("click", () => {
         : '<i class="fa-solid fa-bars"></i>';
 });
 
-navLinks.forEach((link) => {
-    link.addEventListener("click", closeMenu);
+navLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 920) closeMenu();
 });
 
+/* ============================================================
+   ACTIVE NAV ON SCROLL
+   ============================================================ */
 const setActiveNav = () => {
-    const position = window.scrollY + 140;
+    const position = window.scrollY + 150;
     let active = "home";
 
     sections.forEach((section) => {
-        if (position >= section.offsetTop) {
-            active = section.id;
-        }
+        if (position >= section.offsetTop) active = section.id;
     });
 
     navLinks.forEach((link) => {
@@ -48,36 +59,104 @@ const setActiveNav = () => {
     });
 };
 
+/* ============================================================
+   HEADER SCROLL STATE + SCROLL-TO-TOP + PROGRESS BAR
+   ============================================================ */
 const handleWindowUI = () => {
-    header.classList.toggle("scrolled", window.scrollY > 10);
-    topBtn.classList.toggle("show", window.scrollY > 450);
+    const scrolled = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+
+    header.classList.toggle("scrolled", scrolled > 10);
+    topBtn.classList.toggle("show", scrolled > 450);
+
+    if (progressBar && docHeight > 0) {
+        progressBar.style.width = ((scrolled / docHeight) * 100).toFixed(2) + "%";
+    }
 };
 
+window.addEventListener("scroll", () => {
+    setActiveNav();
+    handleWindowUI();
+}, { passive: true });
+
+/* ============================================================
+   SCROLL-TO-TOP BUTTON
+   ============================================================ */
+topBtn?.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+/* ============================================================
+   REVEAL ON SCROLL (IntersectionObserver)
+   Also triggers skill bar animations when skill cards are revealed
+   ============================================================ */
 const revealObserver = new IntersectionObserver(
     (entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("show");
+
+                // Animate skill bars inside the revealed card
+                const bars = entry.target.querySelectorAll(".bar-fill[data-width]");
+                bars.forEach((bar, i) => {
+                    setTimeout(() => {
+                        bar.style.width = bar.dataset.width + "%";
+                    }, i * 160);
+                });
+
                 revealObserver.unobserve(entry.target);
             }
         });
     },
-    { threshold: 0.2 }
+    { threshold: 0.18 }
 );
 
 revealItems.forEach((item) => revealObserver.observe(item));
 
-window.addEventListener("scroll", () => {
-    setActiveNav();
-    handleWindowUI();
-});
+/* ============================================================
+   CERTIFICATES TOGGLE
+   ============================================================ */
+certToggle?.addEventListener("click", () => {
+    const open = certificateGrid.classList.toggle("open");
+    certToggle.setAttribute("aria-expanded", String(open));
+    certToggle.innerHTML = open
+        ? '<i class="fa-solid fa-chevron-up"></i> Hide Certificates'
+        : '<i class="fa-solid fa-certificate"></i> View Certificates';
 
-window.addEventListener("resize", () => {
-    if (window.innerWidth > 920) {
-        closeMenu();
+    if (open) {
+        certificateGrid.querySelectorAll(".reveal").forEach((item) => {
+            revealObserver.observe(item);
+        });
     }
 });
 
+/* ============================================================
+   CERTIFICATE LIGHTBOX
+   ============================================================ */
+const closeLightbox = () => {
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    lightboxImage.src = "";
+    lightboxImage.alt = "";
+    document.body.style.overflow = "";
+};
+
+certificateGrid?.addEventListener("click", (event) => {
+    if (!(event.target instanceof HTMLImageElement)) return;
+    lightboxImage.src = event.target.src;
+    lightboxImage.alt = event.target.alt;
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    document.body.style.overflow = "hidden";
+});
+
+lightboxClose?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", (event) => {
+    if (event.target === lightbox) closeLightbox();
+});
+
+/* ============================================================
+   KEYBOARD SHORTCUTS
+   ============================================================ */
 document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
         if (lightbox?.classList.contains("open")) {
@@ -88,71 +167,71 @@ document.addEventListener("keydown", (event) => {
     }
 });
 
-topBtn?.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-});
+/* ============================================================
+   TYPING ANIMATION (hero)
+   ============================================================ */
+if (typedText) {
+    const roles = [
+        "Web Developer",
+        "Full-Stack Developer",
+        "PHP Developer",
+        "UI/UX Enthusiast",
+    ];
+    let roleIndex  = 0;
+    let charIndex  = 0;
+    let isDeleting = false;
 
-certToggle?.addEventListener("click", () => {
-    const open = certificateGrid.classList.toggle("open");
-    certToggle.setAttribute("aria-expanded", String(open));
-    certToggle.textContent = open ? "Hide Certificates" : "View Certificates";
+    const typeLoop = () => {
+        const current = roles[roleIndex];
 
-    if (open) {
-        certificateGrid.querySelectorAll(".reveal").forEach((item) => {
-            revealObserver.observe(item);
-        });
-    }
-});
+        if (isDeleting) {
+            typedText.textContent = current.slice(0, charIndex - 1);
+            charIndex--;
+        } else {
+            typedText.textContent = current.slice(0, charIndex + 1);
+            charIndex++;
+        }
 
-const closeLightbox = () => {
-    lightbox.classList.remove("open");
-    lightbox.setAttribute("aria-hidden", "true");
-    lightboxImage.src = "";
-    lightboxImage.alt = "";
-    document.body.style.overflow = "";
-};
+        if (!isDeleting && charIndex === current.length) {
+            isDeleting = true;
+            setTimeout(typeLoop, 1800);
+            return;
+        }
 
-certificateGrid?.addEventListener("click", (event) => {
-    const target = event.target;
-    if (!(target instanceof HTMLImageElement)) {
-        return;
-    }
+        if (isDeleting && charIndex === 0) {
+            isDeleting  = false;
+            roleIndex   = (roleIndex + 1) % roles.length;
+            setTimeout(typeLoop, 400);
+            return;
+        }
 
-    lightboxImage.src = target.src;
-    lightboxImage.alt = target.alt;
-    lightbox.classList.add("open");
-    lightbox.setAttribute("aria-hidden", "false");
-    document.body.style.overflow = "hidden";
-});
+        setTimeout(typeLoop, isDeleting ? 55 : 95);
+    };
 
-lightboxClose?.addEventListener("click", closeLightbox);
+    setTimeout(typeLoop, 800);
+}
 
-lightbox?.addEventListener("click", (event) => {
-    if (event.target === lightbox) {
-        closeLightbox();
-    }
-});
-
+/* ============================================================
+   CONTACT FORM SUBMISSION
+   ============================================================ */
 form?.addEventListener("submit", async (event) => {
     event.preventDefault();
     statusEl.className = "status";
-    statusEl.textContent = "Sending your message...";
+    statusEl.textContent = "Sending your message…";
     sendBtn.disabled = true;
 
     try {
         const response = await fetch(form.action, {
             method: "POST",
-            body: new FormData(form)
+            body: new FormData(form),
         });
 
-        if (!response.ok) {
-            throw new Error("Request failed");
-        }
+        if (!response.ok) throw new Error("Request failed");
 
         form.reset();
         statusEl.classList.add("ok");
         statusEl.textContent = "Message sent successfully. Thank you!";
-    } catch (error) {
+    } catch {
         statusEl.classList.add("err");
         statusEl.textContent = "Failed to send message. Please try again.";
     } finally {
@@ -160,6 +239,9 @@ form?.addEventListener("submit", async (event) => {
     }
 });
 
+/* ============================================================
+   INIT
+   ============================================================ */
 year.textContent = new Date().getFullYear();
 setActiveNav();
 handleWindowUI();

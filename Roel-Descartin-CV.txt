@@ -1,38 +1,75 @@
-Roel B. Descartin
+ROEL B. DESCARTIN
 Panabo City, Philippines
 Phone: 0938 895 3972
 Email: roeldescartin12@gmail.com
-
-Professional Summary
-Aspiring Operational Technology professional and BSIT student with practical
-experience in mobile device troubleshooting and foundational web development.
-Interested in building reliable systems that connect software with real-world operations.
-
-Education
-Bachelor of Science in Information Technology
-Davao del Norte State College
-
-Skills
-- HTML, CSS, JavaScript
-- PHP, Laravel
-- MySQL, Bootstrap
-- Basic UI/UX and responsive web design
-- Mobile device diagnostics and repair
-
-Services
-- Cellphone Technician
-- Backend Development (entry level)
-- Frontend Development (entry level)
-
-Interests
-- Coding
-- Photography
-- Music
-- Photo Editing
-- DIY Projects
-- Motorcycle
-
-Links
 GitHub: https://github.com/KongSkull12
-Instagram: https://www.instagram.com/roeldescartin/?hl=en
-Facebook: https://www.facebook.com/roeldescartin22
+
+================================================================================
+PROFESSIONAL SUMMARY
+================================================================================
+BSIT graduate and full-stack developer with mastered skills in frontend, backend, and
+mobile development. Hands-on experience in web development, hardware integration, and
+mobile device diagnostics. Builds practical web solutions with clean interfaces,
+reliable backend logic, and maintainable code. Open to full-time roles, project
+collaborations, and growth opportunities.
+
+================================================================================
+WORK EXPERIENCE
+================================================================================
+
+Onboarding Hardware Integration & Development Chief
+Nehemiah Solutions Corporation | September 2025 – Present
+• Lead hardware integration and development onboarding initiatives.
+• Oversee setup, configuration, and deployment of new hardware systems.
+• Coordinate cross-functional teams for smooth system integration.
+Skills: Hardware Integration, Team Leadership, System Deployment, IoT
+
+Web Developer Intern (OJT)
+Nehemiah Solutions Corporation | February 2026 – May 2026
+• Contributed to frontend development, backend logic, and database management.
+• Gained hands-on experience in a professional software development environment.
+Skills: PHP, Laravel, MySQL, HTML/CSS
+
+================================================================================
+EDUCATION
+================================================================================
+Bachelor of Science in Information Technology
+Davao del Norte State College | Graduated 2026
+
+================================================================================
+TECHNICAL SKILLS
+================================================================================
+Frontend (Mastered):     HTML, CSS, JavaScript, Bootstrap, Responsive Design
+Backend (Mastered):      PHP, Laravel, MySQL, Database Design
+Mobile/Tools (Mastered): Flutter, React Native, Mobile Device Diagnostics & Repair
+Also Exploring:          React, n8n Automation
+
+================================================================================
+SELECTED PROJECTS
+================================================================================
+Pickle Pro World (pickleproworld.com) — Live pickleball platform with bookings,
+  tournaments, rankings, and membership management. PHP, MySQL, JavaScript, CSS.
+
+Enrollment System UI — Responsive enrollment interface with student records.
+  HTML, CSS, Bootstrap.
+
+Ordering System — Food ordering app with cart and order tracking.
+  PHP, MySQL, Bootstrap.
+
+Water Billing Concept — Utility billing management system. PHP, MySQL, CSS.
+
+================================================================================
+CERTIFICATIONS
+================================================================================
+CyberSecurity Ethical Hacking          CISCO  | December 2025
+CyberSecurity Essentials               CISCO  | May 2025
+Advanced Seminar Day 1 & 2             DNSC   | October–November 2025
+TESDA NCII                               TESDA  | June 2022
+
+================================================================================
+LINKS
+================================================================================
+Portfolio:  index.html
+GitHub:     https://github.com/KongSkull12
+Instagram:  https://www.instagram.com/roeldescartin/?hl=en
+Facebook:   https://www.facebook.com/roeldescartin22

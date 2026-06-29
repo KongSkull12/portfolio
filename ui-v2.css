@@ -908,6 +908,28 @@ img {
     color: #b4c8ff;
 }
 
+.exp-badge.completed {
+    background: rgba(108, 143, 255, 0.1);
+    border: 1px solid rgba(108, 143, 255, 0.35);
+    color: #b4c8ff;
+}
+
+.exp-badge.graduated {
+    background: rgba(54, 227, 176, 0.1);
+    border: 1px solid rgba(54, 227, 176, 0.35);
+    color: var(--accent-soft);
+}
+
+.exp-logo-icon {
+    background: rgba(54, 227, 176, 0.08);
+    border-color: rgba(54, 227, 176, 0.25);
+}
+
+.exp-logo-icon i {
+    font-size: 2.8rem;
+    color: var(--accent-soft);
+}
+
 /* Duration */
 .exp-duration {
     font-size: 1.35rem;
@@ -1407,6 +1429,19 @@ img {
 .skill-cat-icon {
     color: var(--accent);
     font-size: 1.7rem;
+}
+
+.skill-level {
+    margin-left: auto;
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(54, 227, 176, 0.12);
+    border: 1px solid rgba(54, 227, 176, 0.25);
 }
 
 .skill-row {

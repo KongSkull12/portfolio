@@ -209,10 +209,10 @@ document.addEventListener("keydown", (event) => {
    ============================================================ */
 if (typedText) {
     const roles = [
-        "Web Developer",
         "Full-Stack Developer",
+        "Web Developer",
         "PHP Developer",
-        "UI/UX Enthusiast",
+        "Mobile Developer",
     ];
     let roleIndex  = 0;
     let charIndex  = 0;
